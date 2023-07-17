@@ -1,11 +1,22 @@
 package pom;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+import org.apache.poi.EncryptedDocumentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utility.UtilityClass;
+
+
+
 public class LoginPage {
+	Properties prop;
+	FileInputStream fis;
 
 	@FindBy(xpath="//a[text()='Sign in']")private WebElement HomePageSignInButton;
 	
@@ -26,16 +37,25 @@ public class LoginPage {
 	}
 	
 	public void HomePageSignInButton() {
+		
 		HomePageSignInButton.click();
 	}
-	public void MobileNumber() {
-		MobileNumber.sendKeys("9850005857");
+	public void MobileNumber() throws IOException {
+		/*prop=new Properties();
+	  	fis=new FileInputStream("C:\\Users\\Akash\\eclipse-workspace\\18FebMorning\\loginDetails.properties");
+		prop.load(fis);
+		MobileNumber.sendKeys(prop.getProperty("mobNo"));*/
+		MobileNumber.sendKeys(UtilityClass.readData(7, 1));
 	}
 	public void LoginWithPWD() {
 		LoginWithPWD.click();
 	}
-	public void PasswordField() {
-		PasswordField.sendKeys("Policy@6");
+	public void PasswordField() throws EncryptedDocumentException, IOException {
+		prop=new Properties();
+	  	fis=new FileInputStream("C:\\Users\\Akash\\eclipse-workspace\\18FebMorning\\loginDetails.properties");
+		prop.load(fis);
+		PasswordField.sendKeys(prop.getProperty("pwd"));
+		
 		}
 	public void SignInButton() {
 		SignInButton.click();

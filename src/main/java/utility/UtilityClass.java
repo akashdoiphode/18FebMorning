@@ -23,6 +23,7 @@ package utility;
 			driver.manage().timeouts().implicitlyWait(Duration.ofMillis(time));
 		}
 		
+		
 		public static void screenShot(WebDriver driver,String name) throws IOException {
 			File source = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 			File dest=new File("C:\\Users\\Akash\\Pictures\\Screenshots\\"+name+".png");
@@ -31,7 +32,7 @@ package utility;
 		}
 
 		public static String readData(int row,int col) throws EncryptedDocumentException, IOException {
-			FileInputStream myFile=new FileInputStream("E:\\testers.xlsx");
+			FileInputStream myFile=new FileInputStream("E:\\testFile\\testers.xlsx");
 			String value = WorkbookFactory.create(myFile).getSheet("Sheet1").getRow(row).getCell(col).getStringCellValue();
 			Reporter.log("Reading data from excel sheet",true);
 			return value;

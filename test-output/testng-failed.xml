@@ -5,9 +5,11 @@
     <classes>
       <class name="test.PolicyBazarUserNameValidate">
         <methods>
+          <include name="aa"/>
           <include name="loginToPolicy"/>
           <include name="f"/>
           <include name="openBrowser1"/>
+          <include name="afterMethod"/>
         </methods>
       </class> <!-- test.PolicyBazarUserNameValidate -->
     </classes>
